@@ -9,9 +9,8 @@ body {
 }
 
 header {
-    padding: 24px;
+    padding: 32px;
     border-bottom: 1px solid #ddd;
-    border-radius: 8px;
 }
 
 .header h1 {
