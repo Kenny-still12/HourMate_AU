@@ -137,7 +137,7 @@ button:active {
 
 .shift-container img {
     width: 12px;
-    height: 12x;
+    height: 12px;
 }
 
 .shift-container p {
@@ -149,4 +149,18 @@ button:active {
 .totalhour-display p {
     color: black;
     font-weight: 700;
+}
+
+.prev-btn,
+.next-btn {
+    background: white;
+    padding: 16px 24px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.prev-btn img,
+.next-btn img {
+    width: 24px;
+    height: 24px;
 }
