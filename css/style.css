@@ -164,3 +164,23 @@ button:active {
     width: 18px;
     height: 18px;
 }
+
+.output-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    gap: 12px;
+    padding: 24px;
+}
+
+.total-hour img,
+.remaining-hours img {
+    width: 20px;
+    height: 20px;
+}
+
+.outputWrapper {
+    display: flex;
+    gap: 12px;
+}

@@ -2,8 +2,8 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 
 const form = document.querySelector("#userForm");
 const addBtn = document.querySelector(".add-btn");
-const dateContainer = document.querySelector(".date-container")
 const inputContainer = document.querySelector(".input-container")
+const outputContainer = document.querySelector(".output-cards")
 
 
 let shifts = [];
@@ -80,6 +80,18 @@ function renderAllShift(shifts) {
             container.append(shiftCard);
         }
     });
+}
+
+function renderSummary(shift) {
+
+    const ouputContainerDiv = document.createElement(".div");
+
+    if (ouputContainerDiv) {
+        ouputContainerDiv.innerHTML = `
+        // will add later, am tiredd
+        `;
+    }
+
 }
 
 function displayError() {
