@@ -6,10 +6,17 @@ const dateContainer = document.querySelector(".date-container")
 const inputContainer = document.querySelector(".input-container")
 
 
-const shifts = [];
-let weekOffSet = 0;
+let shifts = [];
+let currentWeekOffSet = 0;
 
-renderWeekDates(weekOffSet);
+loadShifts();
+refreshUI();
+
+function refreshUI() {
+    renderWeekDates(currentWeekOffSet)
+    renderAllShift(getWeekShift(currentWeekOffSet))
+}
+
 
 function renderWeekDates(offSet) {
     const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
@@ -20,6 +27,8 @@ function renderWeekDates(offSet) {
         const dateContainer = document.querySelector(`#${day} .date-container`)
 
         if (dateContainer) {
+            dateContainer.innerHTML = "";
+
             const currentDate = weekStart.add(index, "day");
             const currentDay = document.createElement("p");
             currentDay.classList.add("week-day");
@@ -106,13 +115,14 @@ function addNewShift() {
         workPlace: formData.workPlace
     }
 
-    if (!isCurrentWeek(newShift)) {
+    if (!isSelectedWeek(newShift)) {
         displayError();
         return;
     }
 
     shifts.push(newShift);
-    renderAllShift(shifts);
+    saveData();
+    refreshUI();
 }
 
 
@@ -124,8 +134,16 @@ addBtn.addEventListener("click", (e) => {
 
 })
 
+
 function getSelectedWeek(offSet) {
     return dayjs().add(offSet, "week");
+}
+
+function isSelectedWeek(shift, offSet) {
+    const shiftDate = dayjs(shift.date);
+    const targetWeek = dayjs().add(offSet, "week");
+
+    return shiftDate.isSame(targetWeek, "week")
 }
 
 function getWeekStart(offset) {
@@ -154,6 +172,14 @@ function isSameWeek(offSet) {
     return dayjs().isSame(getSelectedWeek(offSet), 'week')
 }
 
+function getWeekShift(offSet) {
+    const targetWeek = dayjs().add(offSet, "week");
+
+    return shifts.filter((shift) => {
+        return dayjs(shift.date).isSame(targetWeek, "week")
+    })
+}
+
 function getTotalMins(start, end) {
 
     const [startHour, startMin] = start.split(":").map(Number);
@@ -174,3 +200,15 @@ function getDayName(date) {
     return days[(new Date(date).getDay())];
 }
 
+
+// functions for data persistence using local storage
+
+function saveData() {
+    localStorage.setItem("shifts", JSON.stringify(shifts))
+}
+
+function loadShifts() {
+    const data = localStorage.getItem("shifts");
+    shifts = data ? JSON.parse(data) : [];
+
+}
