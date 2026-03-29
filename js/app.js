@@ -73,7 +73,7 @@ function renderAllShift(shifts) {
                 </div>
 
                 <div class="totalhour-display">
-                    <p>${convertHour(shift.totalMin)}</p>
+                    <p>${convertHour(shift.totalMin - shift.break)}</p>
                 </div>
             `;
 
@@ -200,6 +200,18 @@ function getDayName(date) {
     return days[(new Date(date).getDay())];
 }
 
+
+function totalWeekHour(shift) {
+    const currentWeek = getWeekShift(currentWeekOffSet);
+
+    const totalHour = currentWeek.reduce((total, shift) => {
+        return total += shift.totalMin - shift.break;
+    }, 0)
+
+    return totalHour;
+}
+
+console.log(convertHour(totalWeekHour(shifts)))
 
 // functions for data persistence using local storage
 
