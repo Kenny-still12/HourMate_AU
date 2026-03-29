@@ -2,11 +2,36 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 
 const form = document.querySelector("#userForm");
 const addBtn = document.querySelector(".add-btn");
-const weekDay = document.querySelectorAll(".week-day")
+const dateContainer = document.querySelector(".date-container")
 
 
 const shifts = [];
 let weekOffSet = 0;
+
+renderWeekDates(weekOffSet);
+
+function renderWeekDates(offSet) {
+    const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+
+    const weekStart = getWeekStart(offSet);
+
+    weekDays.forEach((day, index) => {
+        const dateContainer = document.querySelector(`#${day} .date-container`)
+
+        if (dateContainer) {
+            const currentDate = weekStart.add(index, "day");
+            const currentDay = document.createElement("p");
+            currentDay.classList.add("week-day");
+            currentDay.textContent = formatDate(currentDate);
+            dateContainer.append(currentDay);
+        }
+    })
+
+    if (dateContainer) {
+        dateContainer.innerHTML = `<p>${formatDate(shift.date)}</p>`
+    }
+}
+
 
 function renderAllShift(shifts) {
     const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
@@ -20,6 +45,7 @@ function renderAllShift(shifts) {
         const dayName = getDayName(shift.date).toLowerCase();
         const container = document.querySelector(`#${dayName} .shift-container`);
         if (container) {
+
             const shiftCard = document.createElement("div");
             shiftCard.classList.add("shift-card");
 
@@ -62,25 +88,33 @@ addBtn.addEventListener("click", (e) => {
         break: formData.break,
         workPlace: formData.workPlace
     }
-    shifts.push(newShift)
+    shifts.push(newShift);
     renderAllShift(shifts);
-    console.log(newShift)
+    console.log(newShift);
     console.log(convertHour(newShift.totalMin))
 })
 
-function testDay() {
-    const currentDay = dayjs().get('date')
-    const currentMonth = dayjs().get('month')
-    const currentYear = dayjs().get('year')
-    return `${currentDay} ${currentMonth + 1}, ${currentYear}`;
+function getSelectedWeek(offSet) {
+    return dayjs().add(offSet, "week");
 }
 
-console.log(testDay())
+function getWeekStart(offset) {
+    return getSelectedWeek(offset).startOf("week")
+}
+
+function getWeekEnd(offSet) {
+    return getSelectedWeek(offSet).endOf("week")
+}
+
+function formatDate(date) {
+    return dayjs(date).format("D MMM YYYY")
+}
 
 
 
-
-
+function isSameWeek(offSet) {
+    return dayjs().isSame(getSelectedWeek(offSet), 'week')
+}
 
 function getTotalMins(start, end) {
 
