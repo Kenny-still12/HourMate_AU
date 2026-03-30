@@ -4,8 +4,10 @@ const form = document.querySelector("#userForm");
 const addBtn = document.querySelector(".add-btn");
 const inputContainer = document.querySelector(".input-container")
 const outputContainer = document.querySelector(".output-cards")
+const totalHourSpan = document.querySelector(".total-hour-span")
+const remainingHourSpan = document.querySelector(".remaining-hours-span")
 
-
+const TOTAL_HOUR_IN_MIN = 1440;
 let shifts = [];
 let currentWeekOffSet = 0;
 
@@ -15,6 +17,7 @@ refreshUI();
 function refreshUI() {
     renderWeekDates(currentWeekOffSet)
     renderAllShift(getWeekShift(currentWeekOffSet))
+    renderSummary(getWeekShift(currentWeekOffSet))
 }
 
 
@@ -82,16 +85,15 @@ function renderAllShift(shifts) {
     });
 }
 
-function renderSummary(shift) {
+function renderSummary(shifts) {
 
-    const ouputContainerDiv = document.createElement(".div");
+    totalHourSpan.textContent = convertHour(totalWeekHour(shifts));
 
-    if (ouputContainerDiv) {
-        ouputContainerDiv.innerHTML = `
-        // will add later, am tiredd
-        `;
+    remainingHourSpan.textContent = convertHour(calculateRemainingHours(totalWeekHour(shifts)));
+
+    if (isWithinLimit(totalWeekHour(shifts))) {
+        remainingHourSpan.style.color = "hsla(120, 100%, 45%)";
     }
-
 }
 
 function displayError() {
@@ -221,6 +223,15 @@ function totalWeekHour(shift) {
     }, 0)
 
     return totalHour;
+}
+
+function calculateRemainingHours(totalHour) {
+
+    return TOTAL_HOUR_IN_MIN - totalHour;
+}
+
+function isWithinLimit(totalHour) {
+    return totalHour < TOTAL_HOUR_IN_MIN ? true : false;
 }
 
 console.log(convertHour(totalWeekHour(shifts)))

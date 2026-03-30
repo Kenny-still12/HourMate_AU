@@ -167,20 +167,47 @@ button:active {
 
 .output-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     border: 1px solid #ddd;
     border-radius: 10px;
     gap: 12px;
     padding: 24px;
 }
 
+.output-cards p {
+    color: grey;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.total-hour,
+.remaining-hours {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+
 .total-hour img,
 .remaining-hours img {
-    width: 20px;
-    height: 20px;
+    color: grey;
+    width: 14px;
+    height: 14px;
 }
+
 
 .outputWrapper {
     display: flex;
-    gap: 12px;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+.total-hour-span,
+.remaining-hours-span {
+    font-size: 1.8rem;
+    font-weight: 700;
 }
