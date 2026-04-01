@@ -6,6 +6,6 @@ export function setShifts(newShifts) {
     shifts = newShifts;
 }
 
-export function setCurretnWeekOffset(value) {
+export function setCurrentWeekOffset(value) {
     currentWeekOffSet += value;
 }

@@ -1,4 +1,4 @@
-import { currentWeekOffSet, setCurretnWeekOffset } from "./data.js"
+import { currentWeekOffSet, setCurrentWeekOffset } from "./data.js"
 import { refreshUI, displayError, clearMessage } from "./render.js"
 import { shifts } from "./data.js"
 import { loadShifts, saveData } from "./storage.js"
@@ -27,7 +27,7 @@ function addNewShift() {
         workPlace: formData.workPlace
     }
 
-    if (!isSelectedWeek(newShift)) {
+    if (!isSelectedWeek(newShift, currentWeekOffSet)) {
         displayError();
         return;
     }
@@ -48,14 +48,14 @@ addBtn.addEventListener("click", (e) => {
 
 prevBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    setCurretnWeekOffset(-1);
+    setCurrentWeekOffset(-1);
     console.log(currentWeekOffSet)
     refreshUI();
 })
 
 nextBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    setCurretnWeekOffset(1);
+    setCurrentWeekOffset(1);
     console.log(currentWeekOffSet)
     refreshUI();
 })

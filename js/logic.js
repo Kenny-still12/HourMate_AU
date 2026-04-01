@@ -2,8 +2,8 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { shifts, currentWeekOffSet, TOTAL_HOUR_IN_MIN } from "./data.js"
 
 
-export function getWeekShift(offSet) {
-    const targetWeek = dayjs().add(offSet, "week");
+export function getWeekShift(currentWeekOffSet) {
+    const targetWeek = dayjs().add(currentWeekOffSet, "week");
 
     return shifts.filter((shift) => {
         return dayjs(shift.date).isSame(targetWeek, "week")
