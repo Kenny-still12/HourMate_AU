@@ -1,4 +1,4 @@
-<h1>AU International Student Working Hour Calculator </h1>
+<h1>HourMate AU </h1>
 
 <p>
         A lightweight web application designed to help international students in Australia calculate their weekly work hours and monitor wheteher they stay within visa work restriction.
