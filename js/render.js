@@ -1,5 +1,5 @@
-import { shifts, setShifts, currentWeekOffSet } from "./data.js"
-import { getWeekShift, getDayName, convertHour, totalWeekHour, calculateRemainingHours, isWithinLimit } from "./logic.js"
+import { shifts, setShifts, currentWeekOffSet, statusConfig } from "./data.js"
+import { getWeekShift, getDayName, converAndFormatTotHour, totalWeekHour, calculateRemainingHours, isWithinLimit, getStatus, convertInHours } from "./logic.js"
 import { getWeekStart, formatDate, } from "./date.js"
 const inputContainer = document.querySelector(".input-container")
 const outputContainer = document.querySelector(".output-cards")
@@ -73,7 +73,7 @@ function renderAllShift(shifts) {
                 </div>
 
                 <div class="totalhour-display">
-                    <p>${convertHour(shift.totalMin - shift.break)}</p>
+                    <p>${converAndFormatTotHour(shift.totalMin - shift.break)}</p>
                     <button data-id="${shift.shiftId}" class="delete" >
                     <img src="assets/icons/delete-2-svgrepo-com.svg">
                     </button>
@@ -87,9 +87,9 @@ function renderAllShift(shifts) {
 
 function renderSummary(shifts) {
 
-    totalHourSpan.textContent = convertHour(totalWeekHour(shifts));
+    totalHourSpan.textContent = converAndFormatTotHour(totalWeekHour(shifts));
 
-    remainingHourSpan.textContent = convertHour(calculateRemainingHours(totalWeekHour(shifts)));
+    remainingHourSpan.textContent = converAndFormatTotHour(calculateRemainingHours(totalWeekHour(shifts)));
 
     if (isWithinLimit(totalWeekHour(shifts))) {
         remainingHourSpan.style.color = "hsla(120, 100%, 45%)";
@@ -98,58 +98,24 @@ function renderSummary(shifts) {
 
 function renderStatus(shifts) {
 
-    const totalRemainingHours = calculateRemainingHours(totalWeekHour(shifts));
+    const totalRemainingHours = convertInHours(calculateRemainingHours(totalWeekHour(shifts)));
+    const status = getStatus(totalRemainingHours)
+    const config = statusConfig[status];
 
-    if (statusDisplay) {
-
-        if (totalRemainingHours <= 0) {
-
-            statusCard.dataset.status = "dangerous";
+    statusCard.dataset.status = status;
 
 
-            statusCard.innerHTML = `
-            <div class = "status-image"><img src="/assets/icons/status-disconnected-svgrepo-com.svg" alt="">
-            </div>
-            <div class = "status-message">
-                <h2>Warning !</h2>
-                <p>You have surpassed the working hour restriction! please adjust your shift immidiately for next week. </p>
-            </div>
-            `;
+    statusCard.innerHTML = `
+        <div class="status-image">
+            <img src="${config.image}" alt ="">
+        </div>
+        <div class="status-message">
+            <h2>${config.title}</h2>
+            <p><${config.message}/p>
+        </div>
+    `;
 
-            statusDisplay.append(statusCard);
-
-        } else if (totalRemainingHours < 8) {
-            statusCard.dataset.status = "warning";
-
-
-            statusCard.innerHTML = `
-            <div class = "status-image"><img src="/assets/icons/status-lagging-svgrepo-com.svg" alt="">
-            </div>
-            <div class = "status-message">
-                <h2>Warning !</h2>
-                <p>You will surpass the working hour restriction if you work full day!</p>
-            </div>
-            `;
-
-            statusDisplay.append(statusCard);
-
-        } else {
-
-            statusCard.dataset.status = "safe";
-
-            statusCard.innerHTML = `
-            <div class = "status-image"><img src="/assets/icons/status-connected-svgrepo-com.svg" alt="">
-            </div>
-            <div class = "status-message">
-                <h2>Within Limit</h2>
-                <p>You're Complying with visa requirement</p>
-            </div>
-        `;
-
-            statusDisplay.append(statusCard);
-
-        }
-    }
+    statusDisplay.append(statusCard);
 }
 
 export function displayError(MessageContent) {

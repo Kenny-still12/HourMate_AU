@@ -10,11 +10,17 @@ export function getWeekShift(currentWeekOffSet) {
     })
 }
 
-export function convertHour(totalmins) {
+export function converAndFormatTotHour(totalmins) {
     const hours = Math.floor(totalmins / 60);
     const mins = totalmins % 60;
 
     return `${hours}h ${mins}m`;
+}
+
+export function convertInHours(totalmins) {
+    const hours = (totalmins / 60);
+
+    return hours
 }
 
 export function getDayName(date) {
@@ -41,13 +47,18 @@ export function totalWeekHour() {
     return totalHour;
 }
 
-export function calculateRemainingHours(totalHour) {
+export function calculateRemainingHours(totalHourinMin) {
 
-    return TOTAL_HOUR_OF_DAY_IN_MIN - totalHour;
+    return TOTAL_HOUR_OF_DAY_IN_MIN - totalHourinMin;
 }
 
 export function isWithinLimit(totalHour) {
     return totalHour < TOTAL_HOUR_OF_DAY_IN_MIN ? true : false;
 }
 
+export function getStatus(totalRemainingHours) {
+    if (totalRemainingHours <= 0) return "dangerous";
+    if (totalRemainingHours < 8) return "warning";
+    return "safe"
+}
 
