@@ -58,24 +58,24 @@ function renderAllShift(shifts) {
 
             shiftCard.innerHTML = `
                 <div class="hour-display">
-                    <img src="assets/icons/clock-svgrepo-com.svg" alt="">
+                    <img src="./assets/icons/clock-svgrepo-com.svg" alt="">
                     <p>${shift.startTime} - ${shift.endTime}</p>
                 </div>
 
                 <div class="break-display">
-                    <img src="assets/icons/coffee-svgrepo-com.svg" alt="">
+                    <img src="./assets/icons/coffee-svgrepo-com.svg" alt="">
                     <p>break: ${shift.break} mins</p>
                 </div>
 
                 <div class="location-display">
-                    <img src="assets/icons/location-svgrepo-com.svg" alt="">
+                    <img src="./assets/icons/location-svgrepo-com.svg" alt="">
                     <p>${shift.workPlace}</p>
                 </div>
 
                 <div class="totalhour-display">
                     <p>${converAndFormatTotHour(shift.totalMin - shift.break)}</p>
                     <button data-id="${shift.shiftId}" class="delete" >
-                    <img src="assets/icons/delete-2-svgrepo-com.svg">
+                    <img src="./assets/icons/delete-2-svgrepo-com.svg">
                     </button>
                 </div>
             `;

@@ -17,18 +17,18 @@ export const statusConfig = {
     safe: {
         title: "Within Limit",
         message: "You are Complying with visa requirement",
-        image: "assets/icons/status-connected-svgrepo-com.svg"
+        image: "./assets/icons/status-connected-svgrepo-com.svg"
     },
     warning: {
         title: "Warning!",
         message: "You will surpass the working hour restriction if you work full day!",
-        image: "/assets/icons/status-lagging-svgrepo-com.svg"
+        image: "./assets/icons/status-lagging-svgrepo-com.svg"
     },
 
     dangerous: {
         title: "Danger!",
         message: "You have surpassed the working hour restriction! please adjust your shift immidiately ",
-        image: "/assets/icons/status-disconnected-svgrepo-com.svg"
+        image: "./assets/icons/status-disconnected-svgrepo-com.svg"
     }
 
 }
