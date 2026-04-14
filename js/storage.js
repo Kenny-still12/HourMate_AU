@@ -9,8 +9,3 @@ export function loadShifts() {
     setShifts(data ? JSON.parse(data) : []);
 
 }
-
-// This function is only temporary as it deletes everything on local storage
-export function deleteData() {
-    localStorage.removeItem("shifts");
-}

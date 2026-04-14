@@ -1,7 +1,7 @@
 import { currentWeekOffSet, NEXT_WEEK_OFFSET, PREV_WEEK_OFFSET, setCurrentWeekOffset, setShifts } from "./data.js"
 import { refreshUI, displayError, clearMessage } from "./render.js"
 import { shifts } from "./data.js"
-import { deleteData, loadShifts, saveData } from "./storage.js"
+import { loadShifts, saveData } from "./storage.js"
 import { getTotalMins } from "./logic.js"
 import { validateShift } from "./validation.js";
 
@@ -59,10 +59,6 @@ nextBtn.addEventListener("click", (e) => {
     refreshUI();
 })
 
-deleteBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    deleteData();
-})
 
 document.addEventListener("click", (e) => {
     const target = e.target.closest(".delete");

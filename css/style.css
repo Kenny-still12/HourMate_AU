@@ -317,10 +317,3 @@ button:active {
 .status-card[data-status="dangerous"] .status-message p {
     color: #C00000;
 }
-
-
-
-.delete-btn {
-    margin-top: 50px;
-    height: 30%;
-}
