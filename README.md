@@ -1,72 +1,93 @@
-<h1>HourMate AU </h1>
+# HourMate AU
 
-<p>
-        A lightweight web application designed to help international students in Australia calculate their weekly work hours and monitor wheteher they stay within visa work restriction.
-</p>
+A lightweight web app that helps international students in Australia track their working hours and stay within visa restrictions (48 hours per fortnight).
 
-<p>live demo: https://kenny-still12.github.io/HoueMate_AU/</p>
+🔗 Live Demo: https://kenny-still12.github.io/HoueMate_AU/
 
-<h2>Purpose of this Project</h2>
+---
 
-<p>
-        This Project is built as practical frontend exercise using pure JavaScript, HTML, and CSS while aiming to solve a real-life international sutdent problem.
-</p>
+## Problem
 
-<h2>Features</h2>
+International students in Australia must follow strict work limits, but:
 
-<ul>
-        <li>Add multiple shifts</li>
-        <li>Store shift records</li>
-        <li>Calculate total worked hours</li>
-        <li>compare against maximum allowed weekly hours</li>
-        <li>Show warning when work hours exceed the limit</li>
-</ul>
+* Employers don’t always track this properly
+* There are no simple tools focused on visa compliance
+* It’s easy to accidentally exceed legal limits
 
-<h2>Tech Stack</h2>
-<ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>DayJS(library)</li>
-</ul>
+---
 
-<h2>Future Plans</h2>
-<ul>
-        <li>Refactor into TypeScript</li>
-        <li>Rebuild UI using React</li>
-        <li>Add local storage support</li>
-        <li>Add local storage support</li>
-        <li>improve responsive design</li>
-</ul>
+## Solution
 
-<h2>Current Limitation</h2>
-<ul>
-        <li>add shift on the same day</li>
-        <li>adding shift that overpass day aka midnight shift</li>
-        <li>Database to store data</li>
-</ul>
-<h2>Learning Focus</h2>
+HourMate AU provides a simple way to:
 
-<h3>This project is mainly used to practice:</h3>
-<ul>
-        <li>separating business logic from UI</li>
-        <li>organazing vannila JavaScript at project scale</li>
-        <li>preparing codease for future migration to modern frontend tools</li>
-</ul>
+* Track multiple work shifts
+* Automatically calculate total hours
+* Monitor usage against the 48-hour fortnight limit
+* Get warnings when approaching or exceeding the limit
 
-<h2>Progress</h2>
-<ul>
-        <li>April 9: Version 1 finished.</li>
-</ul>
+---
 
+## Features
 
+* Add and manage multiple shifts
+* Automatic hour calculation
+* Real-time limit checking
+* Warning system for overworking
+* Lightweight and runs entirely in the browser
 
-<h2> comment from me</h2>
+---
 
-<p>
-        As an international student based in Australia, I have always struggled to manage my working hours since we have a restricted working hours, which is 48 hours per fortnight. As it is mentioned in the DFA website, it is our own responsibility to manage our working hours, since some of the employer are not familiar with those working restriction rules. However I have noticed that there are no proper tools to manage these working hour (as far as I know).
-That is the reason why I came up about this project. I turly believe that this is the beauty of being a programmer. If there is a problem, we have the power to solve it through our programming ability, and our creativity to problem solving. 
-</p>
+## Tech Stack
 
+* HTML
+* CSS
+* JavaScript (Vanilla)
+* Day.js
 
+---
 
+## How to Run
+
+1. Clone the repository
+2. Open `index.html` in your browser
+
+No installation required.
+
+---
+
+## Limitations
+
+* Cannot handle shifts that cross midnight
+* Limited handling for multiple shifts on the same day
+* No persistent storage (data resets on refresh)
+
+---
+
+## Future Improvements
+
+* Add local storage for persistence
+* Improve responsive design
+* Support overnight (midnight-crossing) shifts
+* Refactor to TypeScript
+* Rebuild UI using React
+
+---
+
+## Key Learning Outcomes
+
+* Structuring a frontend project without frameworks
+* Separating business logic from UI
+* Managing state manually in vanilla JavaScript
+* Designing for real-world user constraints
+
+---
+
+## Why I Built This
+
+As an international student in Australia, I’ve personally struggled to track my working hours under visa restrictions.
+
+Since compliance is the student’s responsibility—and many employers are not familiar with these rules—I built this tool to solve a real problem I face.
+
+This project reflects what I enjoy about programming: identifying real-world problems and building practical solutions.
+
+---
