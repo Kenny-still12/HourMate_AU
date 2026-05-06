@@ -2,7 +2,7 @@
 
 A lightweight web app that helps international students in Australia track their working hours and stay within visa restrictions (48 hours per fortnight).
 
-🔗 Live Demo: https://kenny-still12.github.io/HoueMate_AU/
+🔗 Live Demo: https://kenny-still12.github.io/HourMate_AU/
 
 ---
 
