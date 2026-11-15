@@ -1,5 +1,5 @@
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
-import { shifts, currentWeekOffSet, TOTAL_HOUR_OF_DAY_IN_MIN } from "./data.js"
+import { shifts, currentWeekOffSet, TOTAL_HOUR_OF_DAY_IN_MIN, TOTAL_HOUR_OF_DAY_IN_MIN_FOR_FORTNIGHT } from "./data.js"
 
 
 export function getWeekShift(currentWeekOffSet) {
@@ -47,13 +47,30 @@ export function totalWeekHour() {
     return totalHour;
 }
 
-export function calculateRemainingHours(totalHourinMin) {
+export function totalfortnightHour(){
+    const currentWeek = getWeekShift(currentWeekOffSet);
+    const lastweek = getWeekShift(currentWeekOffSet - 1);
 
-    return TOTAL_HOUR_OF_DAY_IN_MIN - totalHourinMin;
+    const totalHour = currentWeek.reduce((total, shift) => {
+        return total += shift.totalMin - shift.break;
+    }, 0)
+
+    const lastweekHour = lastweek.reduce((total, shift) => {
+        return total += shift.totalMin - shift.break;
+    }, 0)
+
+    return totalHour + lastweekHour;
+}
+
+export function calculateRemainingHours(totalHourinMin) {
+ // for now, we are using the fortnightly limit, maybe we will modify this functionto  conditionally use the weekly or fortnigth limit. 
+    //return TOTAL_HOUR_OF_DAY_IN_MIN - totalHourinMin;
+    return TOTAL_HOUR_OF_DAY_IN_MIN_FOR_FORTNIGHT - totalHourinMin;
 }
 
 export function isWithinLimit(totalHour) {
-    return totalHour < TOTAL_HOUR_OF_DAY_IN_MIN ? true : false;
+    //return totalHour < TOTAL_HOUR_OF_DAY_IN_MIN ? true : false;
+    return totalHour < TOTAL_HOUR_OF_DAY_IN_MIN_FOR_FORTNIGHT ? true : false;
 }
 
 export function getStatus(totalRemainingHours) {

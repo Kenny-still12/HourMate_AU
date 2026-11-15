@@ -1,6 +1,7 @@
 import { isSelectedWeek, hasShift, isNegativeHour } from "./validation.js";
 
-export const TOTAL_HOUR_OF_DAY_IN_MIN = 1440;
+export const TOTAL_HOUR_OF_DAY_IN_MIN = 1440; // 24 hours in minutes 
+export const TOTAL_HOUR_OF_DAY_IN_MIN_FOR_FORTNIGHT = 2880;
 export const CURRENT_WEEK_OFFSET = 0;
 export const PREV_WEEK_OFFSET = -1;
 export const NEXT_WEEK_OFFSET = 1;

@@ -1,5 +1,5 @@
 import { shifts, setShifts, currentWeekOffSet, statusConfig } from "./data.js"
-import { getWeekShift, getDayName, converAndFormatTotHour, totalWeekHour, calculateRemainingHours, isWithinLimit, getStatus, convertInHours } from "./logic.js"
+import { getWeekShift, getDayName, converAndFormatTotHour, totalWeekHour,totalfortnightHour ,calculateRemainingHours, isWithinLimit, getStatus, convertInHours } from "./logic.js"
 import { getWeekStart, formatDate, } from "./date.js"
 const inputContainer = document.querySelector(".input-container")
 const outputContainer = document.querySelector(".output-cards")
@@ -91,9 +91,9 @@ function renderAllShift(shifts) {
 
 function renderSummary(shifts) {
 
-    totalHourSpan.textContent = converAndFormatTotHour(totalWeekHour(shifts));
+    totalHourSpan.textContent = converAndFormatTotHour(totalfortnightHour(shifts));
 
-    remainingHourSpan.textContent = converAndFormatTotHour(calculateRemainingHours(totalWeekHour(shifts)));
+    remainingHourSpan.textContent = converAndFormatTotHour(calculateRemainingHours(totalfortnightHour(shifts)));
 
     if (isWithinLimit(totalWeekHour(shifts))) {
         remainingHourSpan.style.color = "hsla(120, 100%, 45%)";
@@ -102,7 +102,7 @@ function renderSummary(shifts) {
 
 function renderStatus(shifts) {
 
-    const totalRemainingHours = convertInHours(calculateRemainingHours(totalWeekHour(shifts)));
+    const totalRemainingHours = convertInHours(calculateRemainingHours(totalfortnightHour(shifts)));
     const status = getStatus(totalRemainingHours)
     const config = statusConfig[status];
 

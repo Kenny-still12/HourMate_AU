@@ -324,6 +324,23 @@ button:active {
     color: #C00000;
 }
 
+.footer {
+    padding: 24px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.footer a {
+    color: inherit;
+    font-weight: 600;
+}
+
+.footer a:hover {
+    color: #000;
+}
+
 @media (max-width: 480px) {
     form {
         grid-template-columns: 1fr;
