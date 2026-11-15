@@ -10,6 +10,8 @@ const statusDisplay = document.querySelector(".status-display");
 const statusCard = document.querySelector(".status-card");
 
 
+const weekDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday","sunday", ];
+
 export function refreshUI() {
     renderWeekDates(currentWeekOffSet)
     renderAllShift(getWeekShift(currentWeekOffSet))
@@ -19,7 +21,7 @@ export function refreshUI() {
 
 
 function renderWeekDates(offSet) {
-    const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+    
 
     const weekStart = getWeekStart(offSet);
 
@@ -45,7 +47,6 @@ function renderWeekDates(offSet) {
 
 
 function renderAllShift(shifts) {
-    const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
     weekDays.forEach(day => {
         const container = document.querySelector(`#${day} .shift-container`)

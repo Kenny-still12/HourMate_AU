@@ -1,5 +1,6 @@
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 
+dayjs.locale({...dayjs.Ls.en, name:"en-monday", weekStart:1})
 
 export function getSelectedWeek(offSet) {
     return dayjs().add(offSet, "week");
