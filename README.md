@@ -59,13 +59,13 @@ No installation required.
 
 * Cannot handle shifts that cross midnight
 * Limited handling for multiple shifts on the same day
-* No persistent storage (data resets on refresh)
+* No persistent storage (data resets on refresh) -data can now be saved through local storage -
 
 ---
 
 ## Future Improvements
 
-* Add local storage for persistence
+* Add local storage for persistence -data can now be saved through local storage - 
 * Improve responsive design
 * Support overnight (midnight-crossing) shifts
 * Refactor to TypeScript
