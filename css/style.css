@@ -182,6 +182,25 @@ button:active {
     color: grey;
 }
 
+.shift-container .rest-message {
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.shift-container .rest-message p {
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.shift-container .rest-message img {
+    width: 40px;
+    height: 40px;
+}
+
 .totalhour-display p {
     color: black;
     font-weight: 700;

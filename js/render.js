@@ -12,6 +12,16 @@ const statusCard = document.querySelector(".status-card");
 
 const weekDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday","sunday", ];
 
+const restMessages = [
+    { text: "Took some rest", icon: "moon" },
+    { text: "Free day, time to study?", icon: "book" },
+    { text: "No shifts, enjoy a break", icon: "cup" },
+    { text: "Day off, take it easy", icon: "leaf" },
+    { text: "Free time, recharge", icon: "gamepad" },
+    { text: "Rest day, you earned it", icon: "sun" },
+    { text: "Nothing on, relax", icon: "sofa" },
+];
+
 export function refreshUI() {
     renderWeekDates(currentWeekOffSet)
     renderAllShift(getWeekShift(currentWeekOffSet))
@@ -86,6 +96,21 @@ function renderAllShift(shifts) {
             `;
 
             container.append(shiftCard);
+        }
+    });
+
+    weekDays.forEach((day, index) => {
+        const container = document.querySelector(`#${day} .shift-container`);
+        if (container && container.children.length === 0) {
+            const { text, icon } = restMessages[index % restMessages.length];
+
+            const restMessage = document.createElement("div");
+            restMessage.classList.add("rest-message");
+            restMessage.innerHTML = `
+                <p>${text}</p>
+                <img src="./assets/icons/rest/${icon}.svg" alt="">
+            `;
+            container.append(restMessage);
         }
     });
 }
